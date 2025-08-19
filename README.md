@@ -1,0 +1,1 @@
+# UWG_Fall_2025_CS2_GitPractice
