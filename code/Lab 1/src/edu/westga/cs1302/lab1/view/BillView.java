@@ -13,6 +13,8 @@ import edu.westga.cs1302.lab1.model.Bill;
  */
 public class BillView {
 
+	private static final double TAX_RATE = 0.1;
+	private static final double TIP_RATE = 0.2;
 	private Bill billDisplay;
 	
 	/**Defines the new billDisplay object 
@@ -47,8 +49,8 @@ public class BillView {
 		
 		text += System.lineSeparator();
 		text += "SUBTOTAL - $" + subTotal + System.lineSeparator();
-		double tax = subTotal * 0.1;
-		double tip = subTotal * 0.2;
+		double tax = subTotal * TAX_RATE;
+		double tip = subTotal * TIP_RATE;
 		text += "TAX - $" + tax + System.lineSeparator();
 		text += "TIP - $" + tip + System.lineSeparator();
 		text += "TOTAL - $" + (subTotal + tip + tax);
