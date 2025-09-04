@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import edu.westga.cs1302.lab2.model.BillItem;
+import edu.westga.cs1302.javafx_sample_starter.model.BillItem;
 
 class TestConstructor {
 	

@@ -1,4 +1,4 @@
-package edu.westga.cs1302.lab1.model;
+package edu.westga.cs1302.lab3.model;
 
 /** Stores information for a single item on a bill.
  * 
@@ -9,7 +9,7 @@ public class BillItem {
 	private String name;
 	private double amount;
 	
-	/** create anew bill item with the provided name and amount
+	/** create a new bill item with the provided name and amount
 	 * 
 	 * @precondition name != null &&
 	 * 				 amount > 0
@@ -29,7 +29,6 @@ public class BillItem {
 		this.name = name;
 		this.amount = amount;
 	}
-	
 	/** Return the name for the bill item
 	 * 
 	 * @precondition none
@@ -41,6 +40,7 @@ public class BillItem {
 		return this.name;
 	}
 	
+
 	/** Return the amount for the bill item
 	 * 
 	 * @precondition none

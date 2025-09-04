@@ -1,0 +1,79 @@
+commit 2a951e33d30409bb284aab58c186d4ab0085b674
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Wed Sep 3 23:26:28 2025 -0400
+
+    Implemented TestGetText class to test BillView
+    
+    Added test cases into TestGetText to test normal operations of the
+    getText method in the BillView class. Added a test case with an empty
+    bill to test proper bill total and subtotals of zero dollars.
+
+commit 4ba96a3ea6b6d4cca00b2751b6ff20010230dfda
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Wed Sep 3 22:20:15 2025 -0400
+
+    Implemented TestConstructor class to test BillItem
+    
+    Added test cases for the BillItem constructor which test the
+    preconditions for the parameters 'name' and 'amount'
+
+commit a6a5f373ff3b99dd9e8cd67d8b2598cd2186c953
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Wed Sep 3 18:24:55 2025 -0400
+
+    Implemented TestAddItem Class to test Bill class
+    
+    Implemented several test methods which test the constraints and
+    adherence of the addItem method.
+    
+    Note - A problem has occured in my file explorer where mutliple lab 2
+    directories exist and I have trouble using commit on the right
+    directory. The previous commit may have been on the false directory and
+    thus this commit seems separate and not a continuation.
+    
+    This is commit #2, following the commit with the intial creation of test
+    classes
+
+commit 6ee6b228b27521b1043b402168ec8cfd32859cd1
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Wed Sep 3 12:45:46 2025 -0400
+
+    Added Test Classes for Unit Testing of Reg Classes
+    
+    I have added the TestConstructor, TestGetText, and TestAdditem classes
+    to test the bill, billItem, and billview classes
+
+commit f890f6728200c4b8c8f9d7e6af31d594ee72b773
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Wed Aug 27 17:35:42 2025 -0400
+
+    Fix: replaced magic numbers with named constants
+    
+    Added TAX_RATE and TIP_RATE variables to BillView class in place of
+    arbitrary '0.1' and '0.2' doubles used for calculating bill taxes and
+    tips
+
+commit 5c6df6695c1677be5a3d0089215378cd7af9c5dd
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Wed Aug 27 16:22:45 2025 -0400
+
+    Fix: resolved separation of concerns
+    
+    Created BillView class in new view package to use getText(), which
+    displays the bill items and totals. Subsequently removed getText() from
+    Bill class and created a new getItems() method to return the list of
+    bill items in the new BillView class
+
+commit 3e34403c62413b53d3a6d9538ef795c03639abc5
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Thu Aug 21 12:29:48 2025 -0400
+
+    Add Lab1 starter
+    
+    Added starter project into code folder
+
+commit 1577f2b52b7e4855f796ac6651912dd700361d44
+Author: AdrienLawrence <firestar9jr@gmail.com>
+Date:   Tue Aug 19 10:04:46 2025 -0400
+
+    Initial commit

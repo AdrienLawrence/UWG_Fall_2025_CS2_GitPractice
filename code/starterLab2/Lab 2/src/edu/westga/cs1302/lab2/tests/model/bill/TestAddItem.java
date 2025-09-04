@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-import edu.westga.cs1302.lab2.model.Bill;
-import edu.westga.cs1302.lab2.model.BillItem;
+import edu.westga.cs1302.javafx_sample_starter.model.Bill;
+import edu.westga.cs1302.javafx_sample_starter.model.BillItem;
 
 class TestAddItem {
 	
