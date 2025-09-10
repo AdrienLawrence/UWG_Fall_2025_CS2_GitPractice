@@ -15,6 +15,7 @@ public class BillView {
 	 * @precondition none
 	 * @postcondition none
 	 * 
+	 * @param bill constructor input
 	 * @return a String containing the list of bill items and total for the bill
 	 */
 	public String getText(Bill bill) {
@@ -26,13 +27,17 @@ public class BillView {
 		}
 		
 		text += System.lineSeparator();
-		text += "SUBTOTAL - $" + subTotal + System.lineSeparator();
+		text += "SUBTOTAL - $" + this.roundToNearestHundredth(subTotal) + System.lineSeparator();
 		double tax = subTotal * Bill.TAX_RATE;
 		double tip = subTotal * Bill.TIP_RATE;
-		text += "TAX - $" + tax + System.lineSeparator();
-		text += "TIP - $" + tip + System.lineSeparator();
-		text += "TOTAL - $" + (subTotal + tip + tax);
+		text += "TAX - $" + this.roundToNearestHundredth(tax) + System.lineSeparator();
+		text += "TIP - $" + this.roundToNearestHundredth(tip) + System.lineSeparator();
+		text += "TOTAL - $" + this.roundToNearestHundredth(subTotal + tip + tax);
 		
 		return text;
+	}
+	
+	private double roundToNearestHundredth(double value) {
+		return (int) (value * 100) / 100.0;
 	}
 }
