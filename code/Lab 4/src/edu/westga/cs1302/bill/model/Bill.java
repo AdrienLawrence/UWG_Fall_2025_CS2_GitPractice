@@ -54,7 +54,7 @@ public class Bill {
 	/** Returns the list of items in the bill
 	 * 
 	 * @precondition none
-	 * @postconition none
+	 * @postcondition none
 	 * 
 	 * @return the list of items in the bill
 	 */
