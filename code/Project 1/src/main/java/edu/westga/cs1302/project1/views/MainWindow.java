@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import edu.westga.cs1302.project1.model.Task;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 
 /**
  * Controller class for drawing various things to our canvas window.
@@ -57,6 +58,24 @@ public class MainWindow {
     
     @FXML
     private Button removeButton;
+    
+    @FXML
+    private Label prio1Label;
+
+    @FXML
+    private Label prio2Label;
+
+    @FXML
+    private Label prio3Label;
+
+    @FXML
+    private Label prio4Label;
+
+    @FXML
+    private Label prio5label;
+    
+    @FXML
+    private Button prioCountButton;
 
 
     /**
@@ -157,6 +176,11 @@ public class MainWindow {
     	 this.selectDesc.clear();
     	 this.selectPrio.clear();
     	 
+    	 
+     }
+
+     @FXML
+     void showCounts(ActionEvent event) {
     	 
      }
 
