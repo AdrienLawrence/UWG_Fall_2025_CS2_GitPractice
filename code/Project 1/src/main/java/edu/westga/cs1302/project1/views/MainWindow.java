@@ -51,8 +51,10 @@ public class MainWindow {
 
     @FXML
     private TextField selectPrio;
+    
+    @FXML
+    private Button updateDescButton;
 
-   
     /**
      * Perform any needed initialization of UI components and underlying objects.
      * 
@@ -108,6 +110,11 @@ public class MainWindow {
     		 alert.showAndWait();
     	 }
    
+     }
+     
+     @FXML
+     void updateDesc(ActionEvent event) {
+    	 
      }
 }
 
