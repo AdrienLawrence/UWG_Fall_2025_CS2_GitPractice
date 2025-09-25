@@ -72,5 +72,33 @@ class TestConstructor {
             new Task("name", "desc", -5);
         });
     }
+    
+    
+    @Test
+    void validDescUpdateTest() {
+    	Task task = new Task("name", "desc1", 1);
+    	task.setDesc("desc2");
+    	assertEquals("desc2", task.getDescription());
+    }
+    
+    @Test
+    void nullDescUpdateTest() {
+    	Task task = new Task("name", "desc1", 1);
+    	assertThrows(IllegalArgumentException.class, () -> {
+    		task.setDesc(null);
+    	});
+    }
+    
+    @Test
+    void blankDescUpdateTest() {
+    	Task task = new Task("name", "desc1", 1);
+    	assertThrows(IllegalArgumentException.class, () -> {
+    		task.setDesc("");
+    	});
+    	
+    	assertThrows(IllegalArgumentException.class, () -> {
+    		task.setDesc("  ");
+    	});
+    }
 	
 }

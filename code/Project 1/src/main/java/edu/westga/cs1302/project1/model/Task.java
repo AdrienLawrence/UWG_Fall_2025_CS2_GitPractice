@@ -44,4 +44,11 @@ public class Task {
 		return this.name;
 	}
 	
+	public void setDesc(String d) {
+		if (d == null || d.trim().isEmpty()) {
+			throw new IllegalArgumentException("Description cannot be null or blank");
+		}
+		this.description = d;
+	}
+	
 }
