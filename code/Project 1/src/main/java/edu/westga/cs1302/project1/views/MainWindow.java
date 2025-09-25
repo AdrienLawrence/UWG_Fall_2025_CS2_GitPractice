@@ -54,6 +54,10 @@ public class MainWindow {
     
     @FXML
     private Button updateDescButton;
+    
+    @FXML
+    private Button removeButton;
+
 
     /**
      * Perform any needed initialization of UI components and underlying objects.
@@ -134,6 +138,13 @@ public class MainWindow {
     		 alert.showAndWait();
     	 }
      }
+     
+
+     @FXML
+     void removeTask(ActionEvent event) {
+
+     }
+
 }
 
 

@@ -42,6 +42,7 @@
       </VBox>
       <TextField fx:id="selectPrio" editable="false" layoutX="75.0" layoutY="681.0" prefHeight="48.0" prefWidth="350.0" />
       <TextArea fx:id="selectDesc" layoutX="75.0" layoutY="565.0" prefHeight="118.0" prefWidth="311.0" />
-      <Button fx:id="updateDescButton" layoutX="400.0" layoutY="612.0" mnemonicParsing="false" onAction="#updateDesc" text="Update" />
+      <Button fx:id="updateDescButton" layoutX="411.0" layoutY="581.0" mnemonicParsing="false" onAction="#updateDesc" text="Update" />
+      <Button fx:id="removeButton" layoutX="409.0" layoutY="637.0" mnemonicParsing="false" onAction="#removeTask" text="Remove" />
    </children>
 </AnchorPane>
