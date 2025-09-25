@@ -115,6 +115,24 @@ public class MainWindow {
      @FXML
      void updateDesc(ActionEvent event) {
     	 
+    	 try {
+    		 Task select = this.taskView.getSelectionModel().getSelectedItem();
+    	 
+    		 if (select == null) {
+    			 Alert alert = new Alert(Alert.AlertType.WARNING);
+    			 alert.setContentText("No Task Selected to Update");
+    			 alert.showAndWait();
+    			 return;
+    		 }
+    	 
+    		 String newDesc = this.selectDesc.getText().trim();
+    	 
+    		 select.setDesc(newDesc);
+    	 } catch (IllegalArgumentException e) {
+    		 Alert alert = new Alert(Alert.AlertType.ERROR);
+    		 alert.setContentText(e.getMessage());
+    		 alert.showAndWait();
+    	 }
      }
 }
 
