@@ -142,7 +142,22 @@ public class MainWindow {
 
      @FXML
      void removeTask(ActionEvent event) {
-
+    	 
+    	 Task select = this.taskView.getSelectionModel().getSelectedItem();
+    	 
+    	 if (select == null) {
+    		 Alert alert = new Alert(Alert.AlertType.WARNING);
+			 alert.setContentText("No Task Selected to Remove");
+			 alert.showAndWait();
+			 return;
+    	 }
+    	 
+    	 this.taskView.getItems().remove(select);
+    	 
+    	 this.selectDesc.clear();
+    	 this.selectPrio.clear();
+    	 
+    	 
      }
 
 }
