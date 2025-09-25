@@ -46,6 +46,12 @@ public class MainWindow {
     @FXML
     private ListView<Task> taskView;
 
+    @FXML
+    private TextArea selectDesc;
+
+    @FXML
+    private TextField selectPrio;
+
    
     /**
      * Perform any needed initialization of UI components and underlying objects.
