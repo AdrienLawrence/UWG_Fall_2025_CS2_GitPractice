@@ -64,6 +64,22 @@ public class MainWindow {
     public void initialize() {
     	this.prioBox.getItems().addAll(1, 2, 3, 4, 5);
     	this.prioBox.getSelectionModel().selectFirst();
+    	
+    	this.taskView.getSelectionModel().selectedItemProperty().addListener(
+    	        (observable, current, select) -> {
+    	        	
+    	            if (select != null) {
+    	             
+    	                this.selectDesc.setText(select.getDescription());
+    	                this.selectPrio.setText(String.valueOf(select.getPriority()));
+    	                
+    	            } else {
+    	                
+    	                this.selectDesc.clear();
+    	                this.selectPrio.clear();
+    	            }
+    	        }
+    	    );
     }
     
      @FXML
@@ -91,6 +107,7 @@ public class MainWindow {
     		 alert.setContentText(e.getMessage());
     		 alert.showAndWait();
     	 }
+   
      }
 }
 
