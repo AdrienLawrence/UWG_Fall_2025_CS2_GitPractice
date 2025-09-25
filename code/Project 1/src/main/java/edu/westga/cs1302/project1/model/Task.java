@@ -18,7 +18,7 @@ public class Task {
 			throw new IllegalArgumentException("Description cannot be null or blank");
 		}
 		
-		if (p < 1) {
+		if (p < 1 ) {
 			throw new IllegalArgumentException("Priority must be a chosen number greater than 0");
 		}
 		
