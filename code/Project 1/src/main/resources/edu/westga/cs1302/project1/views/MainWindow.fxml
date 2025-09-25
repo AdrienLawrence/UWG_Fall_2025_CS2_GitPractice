@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.westga.cs1302.project1.views.MainWindow">
+   <children>
+      <VBox layoutX="50.0" layoutY="6.0" prefHeight="575.0" prefWidth="400.0">
+         <children>
+            <Text fx:id="nameLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Task Name:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <TextField fx:id="nameField" />
+            <Text fx:id="descLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Task Description:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <TextArea fx:id="descField" prefHeight="200.0" prefWidth="200.0" />
+            <Text fx:id="prioLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Priority:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <ComboBox fx:id="prioBox" prefWidth="150.0" promptText="Priority Number" />
+            <Button fx:id="subButton" mnemonicParsing="false" onAction="#addTask" prefHeight="26.0" prefWidth="362.0" text="Submit Task" />
+            <ListView fx:id="taskView" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+         <padding>
+            <Insets left="25.0" right="25.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>
