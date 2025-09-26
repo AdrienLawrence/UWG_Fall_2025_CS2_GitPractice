@@ -49,7 +49,7 @@
       <Label fx:id="prio2Label" layoutX="75.0" layoutY="689.0" text="2 - Number of Tasks:" />
       <Label fx:id="prio3Label" layoutX="75.0" layoutY="707.0" text="3 - Number of Tasks:" />
       <Label fx:id="prio4Label" layoutX="75.0" layoutY="728.0" text="4 - Number of Tasks:" />
-      <Label fx:id="prio5label" layoutX="236.0" layoutY="671.0" text="5 - Number of Tasks:" />
+      <Label fx:id="prio5Label" layoutX="236.0" layoutY="671.0" text="5 - Number of Tasks:" />
       <Button fx:id="prioCountButton" layoutX="393.0" layoutY="694.0" mnemonicParsing="false" onAction="#showCounts" text="Show Task #'s" />
    </children>
 </AnchorPane>

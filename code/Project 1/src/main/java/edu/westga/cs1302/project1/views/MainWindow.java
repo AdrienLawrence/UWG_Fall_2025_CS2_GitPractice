@@ -13,7 +13,10 @@ import javafx.scene.text.Text;
 import edu.westga.cs1302.project1.model.Task;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import edu.westga.cs1302.project1.model.PriorityCounter;
 
+import java.util.Arrays;
+import java.util.List;
 /**
  * Controller class for drawing various things to our canvas window.
  * 
@@ -72,7 +75,7 @@ public class MainWindow {
     private Label prio4Label;
 
     @FXML
-    private Label prio5label;
+    private Label prio5Label;
     
     @FXML
     private Button prioCountButton;
@@ -181,7 +184,26 @@ public class MainWindow {
 
      @FXML
      void showCounts(ActionEvent event) {
-    	 
+    	 try {
+    	
+    		 List<Task> tasks = this.taskView.getItems();
+    		 
+    		 int count1 = PriorityCounter.countTasks(1, tasks);
+    		 int count2 = PriorityCounter.countTasks(2,  tasks);
+    		 int count3 = PriorityCounter.countTasks(3,  tasks);
+    		 int count4 = PriorityCounter.countTasks(4,  tasks);
+    		 int count5 = PriorityCounter.countTasks(5,  tasks);
+    		 
+    		 this.prio1Label.setText("1 - Number of Tasks: " + count1);
+    		 this.prio2Label.setText("2 - Number of Tasks: " + count2);
+    		 this.prio3Label.setText("3 - Number of Tasks: " + count3);
+    		 this.prio4Label.setText("4 - Number of Tasks: " + count4);
+    		 this.prio5Label.setText("5 - Number of Tasks: " + count5);
+    	 } catch (Exception e) {
+    		 Alert alert = new Alert(Alert.AlertType.ERROR);
+    		 alert.setContentText(e.getMessage());
+    		 alert.showAndWait();
+    	 }
      }
 
 }
