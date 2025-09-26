@@ -1,6 +1,5 @@
 package edu.westga.cs1302.project1.views;
 
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -11,12 +10,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import edu.westga.cs1302.project1.model.Task;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import edu.westga.cs1302.project1.model.PriorityCounter;
 
-import java.util.Arrays;
 import java.util.List;
+
 /**
  * Controller class for drawing various things to our canvas window.
  * 
@@ -25,7 +23,6 @@ import java.util.List;
  */
 public class MainWindow {
 
-	
 	@FXML
     private TextArea descField;
 
@@ -80,7 +77,6 @@ public class MainWindow {
     @FXML
     private Button prioCountButton;
 
-
     /**
      * Perform any needed initialization of UI components and underlying objects.
      * 
@@ -110,7 +106,7 @@ public class MainWindow {
     	    );
     }
     
-     @FXML
+    @FXML
     void addTask(ActionEvent event) {
     	 
     	 try {
@@ -127,12 +123,12 @@ public class MainWindow {
     		 this.descField.clear();
     		 this.prioBox.getSelectionModel().selectFirst();
     		
-    	 } catch (IllegalArgumentException e) {
+    	 } catch (IllegalArgumentException err) {
     	
     		 Alert alert = new Alert(Alert.AlertType.ERROR);
     		 alert.setTitle("Invalid Task");
     		 alert.setHeaderText("Cannot Create Task");
-    		 alert.setContentText(e.getMessage());
+    		 alert.setContentText(err.getMessage());
     		 alert.showAndWait();
     	 }
    
@@ -154,14 +150,13 @@ public class MainWindow {
     		 String newDesc = this.selectDesc.getText().trim();
     	 
     		 select.setDesc(newDesc);
-    	 } catch (IllegalArgumentException e) {
+    	 } catch (IllegalArgumentException err) {
     		 Alert alert = new Alert(Alert.AlertType.ERROR);
-    		 alert.setContentText(e.getMessage());
+    		 alert.setContentText(err.getMessage());
     		 alert.showAndWait();
     	 }
      }
      
-
      @FXML
      void removeTask(ActionEvent event) {
     	 
@@ -178,7 +173,6 @@ public class MainWindow {
     	 
     	 this.selectDesc.clear();
     	 this.selectPrio.clear();
-    	 
     	 
      }
 
@@ -199,9 +193,9 @@ public class MainWindow {
     		 this.prio3Label.setText("3 - Number of Tasks: " + count3);
     		 this.prio4Label.setText("4 - Number of Tasks: " + count4);
     		 this.prio5Label.setText("5 - Number of Tasks: " + count5);
-    	 } catch (Exception e) {
+    	 } catch (Exception err) {
     		 Alert alert = new Alert(Alert.AlertType.ERROR);
-    		 alert.setContentText(e.getMessage());
+    		 alert.setContentText(err.getMessage());
     		 alert.showAndWait();
     	 }
      }
