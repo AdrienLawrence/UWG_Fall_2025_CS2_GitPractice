@@ -9,6 +9,12 @@ import java.util.Scanner;
 
 import edu.westga.cs1302.lab5.model.Student;
 
+/**
+ * Class for using the new One-Line CSV format. This class is accessed by MainWindow for usage
+ * 
+ * @author CS 1302
+ * @version Fall 2025
+ */
 public class OneLineCSVManager extends StudentDataPersistenceManager {
 
 	@Override

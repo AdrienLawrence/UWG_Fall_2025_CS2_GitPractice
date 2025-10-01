@@ -1,0 +1,285 @@
+commit a300ce8617b0a495e064d01ad3d41d954efc7835
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Wed Oct 1 15:39:23 2025 -0400
+
+    Added Features 1 and 2, tested functionality
+    
+    I didn't read carefully enough and changed both the save and load
+    methods one after another in the child class for the new CSV format
+    because they were both right next to each other. I changed the former
+    CSV manager class into an abstract class and moved its functionality
+    into a legacy TwoLineCSVManager child class. MainWindow also operates
+    from the new child class from the new format and has been tested both on
+    the GUI and with JUnit. Next Commit will be checkstyle violations and
+    polishing
+
+commit efed92f84c6218e4356e6818489ba93ea02ae98b
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Fri Sep 26 00:25:00 2025 -0400
+
+    Final Project Touches done, checkstyle verified
+    
+    Used checkstyle to lint all necesarry files, and modified code
+    accordingly. Project complete.
+
+commit 5fbd14ed4d03e68b7f92d4c67fda4e0b9fd0e98d
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Thu Sep 25 20:43:11 2025 -0400
+
+    5C Completed: showCounts() functional
+    
+    MainWindow.java has been updated to use showCounts() implementation. All
+    GUI elements fully functional according to assignment prompt. The last
+    commit will be checkstyle linting and generating the commit log.
+
+commit b3b0596fff315c8a8fccf010777d7917396f76da
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Thu Sep 25 20:22:34 2025 -0400
+
+    5B Completed: PriorityCounter class and test class
+    
+    Implemented a 'Utility' class with a method for returning the number of
+    tasks in a task list with a given priority. Implemented a corresponding
+    test class to test valid and invalid cases.
+
+commit eff32a8513a9a37fd99c9db59d98a6274cddccf6
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Thu Sep 25 19:57:44 2025 -0400
+
+    5A Completed: Count labels and button added
+    
+    Labels for displaying # of tasks per priority have been added as well as
+    a button to update these labels to match the task list
+
+commit 0ac26358308d8b8879b80859e68e77cb1ff60d6a
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Thu Sep 25 19:31:23 2025 -0400
+
+    4B Completed: removeTask() functional
+    
+    removeTask() in MainWindow.java has been implemented and tested
+
+commit a150854cc16090a947eae5df99a896d4e0b773a7
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Thu Sep 25 19:24:23 2025 -0400
+
+    4A Completed: Remove button added
+    
+    removeButton added to MainWindow.fxml and MainWindow.java as well as a
+    removeTask() associated method
+
+commit 97e683957c69436b719bbcc9eeb57b43615df1e7
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Thu Sep 25 19:15:39 2025 -0400
+
+    3C Completed: Update button functional
+    
+    updateDesc() has been implemented in MainWindow.java to reflect changes
+    to a selected task description as well as display an error for invalid
+    attempts
+
+commit 53d1ba6f76fbc859a9dce3eabeb740ada65b5648
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Thu Sep 25 18:57:49 2025 -0400
+
+    3B Completed: Task.java updated with desc setter
+    
+    setDesc() has been added to Task.java to update the description of a
+    task. I recognize the discrepancy between getDescription() and
+    setDesc(), with setDesc using Desc and the getter not using Desc. I
+    thought about changing the getter to getDesc() but decided against it
+    because I didn't feel like updating it everywhere else. Sorry
+
+commit de8df642db473594991f979c61ebf0ba1af7ffa4
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Thu Sep 25 18:43:11 2025 -0400
+
+    3A Completed: Update Button added to GUI
+    
+    updateButton added to GUI and updateDesc method added to MainWindow.java
+
+commit a8ea6a13503455aa55a7bd052d2ac86658f685a1
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Thu Sep 25 18:33:23 2025 -0400
+
+    2B Completed: Selected Task Display is functional
+    
+    The initializer has been implemented with a 'listener' that continuously
+    checks the listView for selections and updates the selected task
+    description and priority accordingly
+
+commit de7cdf041af74d7ec8c40d9ad9c9635ba7ddafd9
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Thu Sep 25 18:05:23 2025 -0400
+
+    2A Completed: Selected Task display areas added
+    
+    Added Text Area and Field to display the selected task description and
+    priority2A Completed: Selected Task display areas added
+    
+    Added Text Area and Field to display the selected task description and
+    priority
+
+commit 5ab46d9b6dba6660d86d2103dca3bd1dcb9a84eb
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Thu Sep 25 17:39:31 2025 -0400
+
+    1C Completed: MainWindow Updated, GUI functional
+    
+    MainWindow.java has been updated. addTask() has been implemented to
+    create a Task object with the fields and comboBox from the GUI. the
+    function uses a Try Catch to prevent invalid task creations or error
+    propagation
+
+commit d3a0c81a8feba63e5292e2fe8f228863a446dc93
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Thu Sep 25 16:53:57 2025 -0400
+
+    1B Completed: Task.java and TestConstructor.java
+    
+    Implemented Task.java with instance variables, a constructor, and
+    necessary getter functions as specified by the assignment.
+    TestConstructor.java includes precondition check cases for the
+    constructor. Checkstyle warnings will not be addressed until final
+    commits so there are missing javadoc comments
+
+commit 0b88b21a1da24495755dee52a37dae23880cd7de
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Thu Sep 25 15:52:56 2025 -0400
+
+    1A. Completed Initial GUI in Anchor Plane
+    
+    Completed step 1A, creating the full GUI with all required elements
+    using SceneBuilder. Copied the Sample controller skeleton into
+    MainWindow.java and changed the <?> values for ComboBox and ListView to
+    fit respective types
+
+commit ffe0cf8f7675f8f196309d511486db7258aeddde
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Thu Sep 11 16:31:08 2025 -0400
+
+    Feature: Implemented BillCalculator and getText
+    
+    Finished the BillCalculator class using isolated static methods for
+    calculating bill aspects. getText was modified to call these methods
+    instead of performing their logic, making the code more concise. Also
+    fixed typo in Bill class and moved rounding method to BillCalculator
+
+commit 2a6cf8ff632477c7916f85dac2949eb4862964c8
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Thu Sep 11 12:41:43 2025 -0400
+
+    Lab 4: Added starter and implemented feature one
+    
+    Lab 4 has been added to the repository and feature one: changing name
+    and amount fields has been implemented. Partial implementation of
+    feature two has taken place with the adding of the BillCalculator class.
+    This is separate from feature one and unfinished.
+
+commit fc986c8333c4f0e33f4a5ff8e1c3716d1840b648
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Wed Sep 10 15:44:13 2025 -0400
+
+    Implemented MainWindow class with interactivity
+    
+    Implemented addItem() method to properly display added items upon
+    pressing the fxml button element. Also added rounding method to
+    BillView.java to prevent long decimals and round to the cent
+
+commit 4730cd2bca7eea7fd2d87dd9daaf21db39e64a5f
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Mon Sep 8 12:48:00 2025 -0400
+
+    Modified MainWindow.java and MainWindow.fxml
+    
+    Added GUI elements into MainWindow.fxml and added the resulting code
+    skeleton into MainWindow.java to be implemented with methods.
+
+commit 8fa2bccfe21d6f816e729594b7c0c200aa794188
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Thu Sep 4 15:54:15 2025 -0400
+
+    Lab 3: Added JavaFX project with Bill and BillItem
+    
+    Imported javaFX stater project and added Bill/Bill Item classes for
+    referencing and refactored all instances of javafx_starter to lab3
+
+commit 2a951e33d30409bb284aab58c186d4ab0085b674
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Wed Sep 3 23:26:28 2025 -0400
+
+    Implemented TestGetText class to test BillView
+    
+    Added test cases into TestGetText to test normal operations of the
+    getText method in the BillView class. Added a test case with an empty
+    bill to test proper bill total and subtotals of zero dollars.
+
+commit 4ba96a3ea6b6d4cca00b2751b6ff20010230dfda
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Wed Sep 3 22:20:15 2025 -0400
+
+    Implemented TestConstructor class to test BillItem
+    
+    Added test cases for the BillItem constructor which test the
+    preconditions for the parameters 'name' and 'amount'
+
+commit a6a5f373ff3b99dd9e8cd67d8b2598cd2186c953
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Wed Sep 3 18:24:55 2025 -0400
+
+    Implemented TestAddItem Class to test Bill class
+    
+    Implemented several test methods which test the constraints and
+    adherence of the addItem method.
+    
+    Note - A problem has occured in my file explorer where mutliple lab 2
+    directories exist and I have trouble using commit on the right
+    directory. The previous commit may have been on the false directory and
+    thus this commit seems separate and not a continuation.
+    
+    This is commit #2, following the commit with the intial creation of test
+    classes
+
+commit 6ee6b228b27521b1043b402168ec8cfd32859cd1
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Wed Sep 3 12:45:46 2025 -0400
+
+    Added Test Classes for Unit Testing of Reg Classes
+    
+    I have added the TestConstructor, TestGetText, and TestAdditem classes
+    to test the bill, billItem, and billview classes
+
+commit f890f6728200c4b8c8f9d7e6af31d594ee72b773
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Wed Aug 27 17:35:42 2025 -0400
+
+    Fix: replaced magic numbers with named constants
+    
+    Added TAX_RATE and TIP_RATE variables to BillView class in place of
+    arbitrary '0.1' and '0.2' doubles used for calculating bill taxes and
+    tips
+
+commit 5c6df6695c1677be5a3d0089215378cd7af9c5dd
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Wed Aug 27 16:22:45 2025 -0400
+
+    Fix: resolved separation of concerns
+    
+    Created BillView class in new view package to use getText(), which
+    displays the bill items and totals. Subsequently removed getText() from
+    Bill class and created a new getItems() method to return the list of
+    bill items in the new BillView class
+
+commit 3e34403c62413b53d3a6d9538ef795c03639abc5
+Author: Adrien Lawrence <firestar9jr@gmail.com>
+Date:   Thu Aug 21 12:29:48 2025 -0400
+
+    Add Lab1 starter
+    
+    Added starter project into code folder
+
+commit 1577f2b52b7e4855f796ac6651912dd700361d44
+Author: AdrienLawrence <firestar9jr@gmail.com>
+Date:   Tue Aug 19 10:04:46 2025 -0400
+
+    Initial commit

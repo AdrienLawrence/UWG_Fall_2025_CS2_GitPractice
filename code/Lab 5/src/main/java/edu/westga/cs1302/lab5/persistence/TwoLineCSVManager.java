@@ -9,6 +9,12 @@ import java.util.Scanner;
 
 import edu.westga.cs1302.lab5.model.Student;
 
+/**
+ * Legacy child class using functionality from old Two-Line CSV format. Now unused by MainWindow.java
+ * 
+ * @author CS 1302
+ * @version Fall 2025
+ */
 public class TwoLineCSVManager extends StudentDataPersistenceManager {
 
 	@Override
