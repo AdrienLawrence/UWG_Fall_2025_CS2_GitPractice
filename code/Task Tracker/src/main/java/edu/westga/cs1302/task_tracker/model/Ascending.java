@@ -10,13 +10,15 @@ import java.util.Comparator;
  */
 public class Ascending implements Comparator<Task> {
 	
-	
 	/** compares two tasks, returns positive if task 1 is a higher priority and 
 	 * thus should come second, negative if the reverse is true, and zero if they are the same
 	 * priority
 	 * 
 	 * @precondition task 1 != null, task 2 != null
 	 * @postcondition None
+	 * 
+	 * @param task1 Task to be compared
+	 * @param task2 Task to be compared to
 	 * 
 	 * @return an integer, positive if task 1 is of greater priority, negative if of lesser priority, and zero if of equal priority
 	 */
@@ -29,5 +31,17 @@ public class Ascending implements Comparator<Task> {
 		return TaskUtility.priorityToInt(task1.getPriority()) - TaskUtility.priorityToInt(task2.getPriority());
 	}
 	
+	/**
+	 * Returns a string representation of the class for the combobox
+	 * 
+	 * @precondition None
+	 * @postcondition None
+	 * 
+	 * @return String representation
+	 */
+	@Override
+	public String toString() {
+		return "Ascending";
+	}
 	
 }

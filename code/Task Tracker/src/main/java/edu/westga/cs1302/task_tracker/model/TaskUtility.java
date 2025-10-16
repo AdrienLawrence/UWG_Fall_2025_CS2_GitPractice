@@ -38,9 +38,9 @@ public class TaskUtility {
 	 * classes
 	 * 
 	 * @precondition task != null
-	 * @postconidition none
+	 * @postcondition none
 	 * 
-	 * @param a task
+	 * @param priority the priority value of an input Task
 	 * 
 	 * @return an integer between 1 and 3 representing a task priority
 	 * 

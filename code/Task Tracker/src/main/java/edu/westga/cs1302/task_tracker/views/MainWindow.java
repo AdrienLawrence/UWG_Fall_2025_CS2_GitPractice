@@ -1,10 +1,13 @@
 package edu.westga.cs1302.task_tracker.views;
 
+import java.util.Arrays;
 import java.util.Comparator;
 
 import edu.westga.cs1302.task_tracker.model.Task;
 import edu.westga.cs1302.task_tracker.model.Task.TaskPriority;
 import edu.westga.cs1302.task_tracker.model.TaskUtility;
+import edu.westga.cs1302.task_tracker.model.Ascending;
+import edu.westga.cs1302.task_tracker.model.Descending;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -78,7 +81,10 @@ public class MainWindow {
     
     @FXML
     void sortTasks(ActionEvent event) {
-
+    	Comparator<Task> selected = this.order.getValue();
+    	if (selected != null) {
+    		this.tasks.getItems().sort(selected);
+    	}
     }
 
     /** Perform any needed initialization of UI components and underlying objects.
@@ -87,5 +93,7 @@ public class MainWindow {
     public void initialize() {
     	this.priority.getItems().addAll(TaskPriority.HIGH, TaskPriority.MEDIUM, TaskPriority.LOW);
     	this.priority.setValue(this.priority.getItems().get(0));
+    	
+    	this.order.getItems().addAll(Arrays.asList(new Ascending(), new Descending()));
     }
 }
