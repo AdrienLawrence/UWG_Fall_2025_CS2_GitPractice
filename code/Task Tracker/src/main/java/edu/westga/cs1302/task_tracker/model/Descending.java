@@ -1,0 +1,33 @@
+package edu.westga.cs1302.task_tracker.model;
+
+import java.util.Comparator;
+
+/**
+ * Compares tasks by priority in ascending order, low to high
+ * 
+ * @author CS 1302
+ * @version Fall 2025
+ */
+public class Descending implements Comparator<Task> {
+	
+	
+	/** compares two tasks, returns positive if task 1 is a lesser priority and 
+	 * thus should come second, negative if the reverse is true, and zero if they are the same
+	 * priority
+	 * 
+	 * @precondition task 1 != null, task 2 != null
+	 * @postcondition None
+	 * 
+	 * @return an integer, positive if task 1 is of lesser priority, negative if of greater priority, and zero if of equal priority
+	 */
+	@Override
+	public int compare(Task task1, Task task2) {
+		if (task1 == null || task2 == null) {
+			throw new IllegalArgumentException("Tasks cannot be null");
+		}
+		
+		return TaskUtility.priorityToInt(task2.getPriority()) - TaskUtility.priorityToInt(task1.getPriority());
+	}
+	
+	
+}
