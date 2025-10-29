@@ -1,0 +1,79 @@
+package edu.westga.cs1302.task_tracker.model;
+
+import java.util.Comparator;
+
+import edu.westga.cs1302.task_tracker.model.Task.TaskPriority;
+
+/** Compare two Tasks to identify the correct AscendingPriority ordering of the tasks.
+ * 
+ * @author CS 1302
+ * @version Fall 2025
+ */
+public class AscendingName implements Comparator<Task> {
+
+	/** Returns a value indicating ordering of the two tasks based 
+	 * on AscendingName name.
+	 * 
+	 * @precondition o1 != null && o2 != null
+	 * @postcondition none
+	 * 
+	 * @param o1 the first task to compare
+	 * @param o2 the second task to compare
+	 * 
+	 * @return -1 if o1 goes first
+	 * 			0 if o1 and o2 are same
+	 * 			1 if o1 goes last
+	 */
+	@Override
+	public int compare(Task o1, Task o2) {
+		if (o1 == null) {
+			throw new IllegalArgumentException("o1 must not be null");
+		}
+		if (o2 == null) {
+			throw new IllegalArgumentException("o2 must not be null");
+		}
+		
+		int result = 0;
+		String name1 = o1.getName();
+		String name2 = o2.getName();
+		
+		int minLength = Math.min(name1.length(), name2.length());
+		
+		for (int i = 0; i < minLength; i++) {
+			if (name1.charAt(i) != name2.charAt(i)) {
+				if (name1.charAt(i) < name2.charAt(i)) {
+					result = -1;
+				}
+				else {
+					result = 1;
+				}
+				break;
+			}
+		
+		}
+		
+		if (result == 0 && name1.length() != name2.length()) {
+			if (name1.length() < name2.length()) {
+				result = -1;
+			}
+			else {
+				result = 1;
+			}
+		}
+		
+		return result;
+	}
+
+	/** Returns the name of the task to represent the task as a String
+	 * 
+	 * @precondition none
+	 * @postcondition none
+	 * 
+	 * @return the name of the task
+	 */
+	@Override
+	public String toString() {
+		return "AscendingName";
+	}
+
+}

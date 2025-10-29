@@ -4,15 +4,15 @@ import java.util.Comparator;
 
 import edu.westga.cs1302.task_tracker.model.Task.TaskPriority;
 
-/** Compare two Tasks to identify the correct Ascending ordering of the tasks.
+/** Compare two Tasks to identify the correct AscendingPriority ordering of the tasks.
  * 
  * @author CS 1302
  * @version Fall 2025
  */
-public class Ascending implements Comparator<Task> {
+public class AscendingPriority implements Comparator<Task> {
 
 	/** Returns a value indicating ordering of the two tasks based 
-	 * on Ascending priority.
+	 * on AscendingPriority priority.
 	 * 
 	 * @precondition o1 != null && o2 != null
 	 * @postcondition none
@@ -51,7 +51,7 @@ public class Ascending implements Comparator<Task> {
 	 */
 	@Override
 	public String toString() {
-		return "Ascending";
+		return "AscendingPriority";
 	}
 
 }
