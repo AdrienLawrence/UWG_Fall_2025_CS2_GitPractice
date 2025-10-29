@@ -35,6 +35,7 @@ public class MainWindow {
     @FXML private TextArea selectedDescription;
     @FXML private TextField selectedPriority;
     @FXML private ListView<Task> tasks;
+    @FXML private ListView<Task> subtasks;
     @FXML private ComboBox<Comparator<Task>> order;
 
     /** Add a new task with the provided information to the listview.
@@ -61,6 +62,7 @@ public class MainWindow {
     		alert.showAndWait();
     	}
     }
+    
 
     /** Display the priority and description of the task selected in the listview.
      * 
