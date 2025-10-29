@@ -142,6 +142,35 @@ public class MainWindow {
     		this.tasks.getItems().sort(this.order.getValue());
     	}
     }
+    
+    /** Add subtasks to a main task
+     * 
+     * @precondition none
+     * @postcondition main task now contains attributes of subtask(s)
+     * 
+     * @param event JavaFX requirement
+     */
+    @FXML
+    void addSubTask(ActionEvent event) {
+        Task selectedTask = this.tasks.getSelectionModel().getSelectedItem();
+        if (selectedTask != null) {
+            try {
+                
+                Task subtask = new Task(this.name.getText(), this.description.getText(), this.priority.getValue());
+                
+                Task updatedTask = selectedTask.addTask(subtask);
+                
+                int selectedIndex = this.tasks.getSelectionModel().getSelectedIndex();
+                this.tasks.getItems().set(selectedIndex, updatedTask);
+                this.tasks.getSelectionModel().select(selectedIndex);
+                
+            } catch (IllegalArgumentException error) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setContentText(error.getMessage());
+                alert.showAndWait();
+            }
+        }
+    }
 
     /** Perform any needed initialization of UI components and underlying objects.
      * 
