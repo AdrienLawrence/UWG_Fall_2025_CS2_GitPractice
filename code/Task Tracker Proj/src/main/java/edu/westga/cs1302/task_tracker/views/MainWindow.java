@@ -79,6 +79,8 @@ public class MainWindow {
     		this.selectedPriority.setText(selectedTask.getPriority().toString());
     		this.selectedDescription.setText(selectedTask.getDescription());
     	}
+    	
+    	this.subtasks.getItems().setAll(selectedTask.getSubTasks());
     }
 
     /** Remove the currently selected task.
@@ -151,7 +153,7 @@ public class MainWindow {
      * @param event JavaFX requirement
      */
     @FXML
-    void addSubTask(ActionEvent event) {
+    void addSubtask(ActionEvent event) {
         Task selectedTask = this.tasks.getSelectionModel().getSelectedItem();
         if (selectedTask != null) {
             try {
@@ -164,12 +166,18 @@ public class MainWindow {
                 this.tasks.getItems().set(selectedIndex, updatedTask);
                 this.tasks.getSelectionModel().select(selectedIndex);
                 
+                
             } catch (IllegalArgumentException error) {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setContentText(error.getMessage());
                 alert.showAndWait();
             }
         }
+    }
+    
+    @FXML
+    void selectSubtask(MouseEvent event) {
+    	
     }
 
     /** Perform any needed initialization of UI components and underlying objects.
