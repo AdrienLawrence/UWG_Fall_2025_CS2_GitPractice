@@ -166,7 +166,6 @@ public class MainWindow {
                 this.tasks.getItems().set(selectedIndex, updatedTask);
                 this.tasks.getSelectionModel().select(selectedIndex);
                 
-                
             } catch (IllegalArgumentException error) {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setContentText(error.getMessage());
@@ -175,9 +174,26 @@ public class MainWindow {
         }
     }
     
+    /** Method for displaying subtask info when clicking a subtask
+     * 
+     * @precondition none
+     * @postcondition none
+     * 
+     * @param event JavaFX parameter
+     */
     @FXML
     void selectSubtask(MouseEvent event) {
-    	
+        Task selectedSubtask = this.subtasks.getSelectionModel().getSelectedItem();
+        if (selectedSubtask != null) {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Subtask Details");
+            alert.setHeaderText("Subtask: " + selectedSubtask.getName());
+            alert.setContentText(
+                "Priority: " + selectedSubtask.getPriority() + "\n"
+            + "Description: " + selectedSubtask.getDescription()
+            );
+            alert.showAndWait();
+        }
     }
 
     /** Perform any needed initialization of UI components and underlying objects.

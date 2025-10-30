@@ -2,9 +2,7 @@ package edu.westga.cs1302.task_tracker.model;
 
 import java.util.Comparator;
 
-import edu.westga.cs1302.task_tracker.model.Task.TaskPriority;
-
-/** Compare two Tasks to identify the correct DescendingPriority ordering of the tasks.
+/** Compare two Tasks to identify the correct DescendingName ordering of the tasks.
  * 
  * @author CS 1302
  * @version Fall 2025
@@ -39,12 +37,11 @@ public class DescendingName implements Comparator<Task> {
 		
 		int minLength = Math.min(name1.length(), name2.length());
 		
-		for (int i = 0; i < minLength; i++) {
-			if (name1.charAt(i) != name2.charAt(i)) {
-				if (name1.charAt(i) < name2.charAt(i)) {
+		for (int iter = 0; iter < minLength; iter++) {
+			if (name1.charAt(iter) != name2.charAt(iter)) {
+				if (name1.charAt(iter) < name2.charAt(iter)) {
 					result = 1;
-				}
-				else {
+				} else {
 					result = -1;
 				}
 				break;
@@ -55,8 +52,7 @@ public class DescendingName implements Comparator<Task> {
 		if (result == 0 && name1.length() != name2.length()) {
 			if (name1.length() < name2.length()) {
 				result = 1;
-			}
-			else {
+			} else {
 				result = -1;
 			}
 		}

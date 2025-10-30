@@ -129,6 +129,15 @@ public class Task {
 		return this.name;
 	}
 	
+	/** Adds a subtask to a main task and converts the main task into a ContainerTask object
+	 * 
+	 * @precondition the subtask cannot be null
+	 * 
+	 * @postcondition there is a new ContainerTask object given the subtask attribute
+	 * 
+	 * @param task new subtask to be added
+	 * @return the new ContainerTask made from the original task to be given a subtask
+	 */
 	public ContainerTask addTask(Task task) {
 		if (task == null) {
 			throw new IllegalArgumentException("task must not be null");
@@ -138,6 +147,14 @@ public class Task {
 		return container;
 	}
 	
+	/** Returns an empty subtask list, method to be overriden in the child class
+	 * 
+	 * @precondition none
+	 * 
+	 * @postcondition none
+	 * 
+	 * @return empty subtask list
+	 */
 	public List<Task> getSubTasks() {
 		List<Task> list = new ArrayList<Task>();
 		return list;
