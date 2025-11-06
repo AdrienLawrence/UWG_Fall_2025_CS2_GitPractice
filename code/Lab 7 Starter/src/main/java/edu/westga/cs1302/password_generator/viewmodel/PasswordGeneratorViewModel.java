@@ -1,11 +1,13 @@
 package edu.westga.cs1302.password_generator.viewmodel;
 
+import edu.westga.cs1302.password_generator.model.PasswordGenerator;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ReadOnlyStringProperty;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import java.util.Random;
 
 /**
  * ViewModel for the Password Generator application.
@@ -22,6 +24,9 @@ public class PasswordGeneratorViewModel {
     private final ReadOnlyStringWrapper generatedPassword;
     private final ReadOnlyStringWrapper errorMessage;
     
+    private final PasswordGenerator generator;
+    private final Random random;
+    
     /**
      * Creates a new PasswordGeneratorViewModel.
      * 
@@ -35,8 +40,10 @@ public class PasswordGeneratorViewModel {
         this.mustIncludeUpperCaseLetters = new SimpleBooleanProperty(false);
         this.generatedPassword = new ReadOnlyStringWrapper("");
         this.errorMessage = new ReadOnlyStringWrapper("");
+        
+        this.random = new Random();
+        this.generator = new PasswordGenerator(this.random.nextLong());
     }
-    
     
     /**
      * Gets the minimum length attribute
@@ -182,7 +189,6 @@ public class PasswordGeneratorViewModel {
         return this.errorMessage.get();
     }
     
-    
     /**
      * Sets the generated password
      * 
@@ -223,5 +229,35 @@ public class PasswordGeneratorViewModel {
         }
         this.clearError();
         return true;
+    }
+    
+    /**
+     * Generates a password based on the current settings
+     * 
+     * @precondition none
+     * @postcondition if successful, generatedPassword is set with the new password
+     *                and errorMessage is cleared; if failed, errorMessage is set
+     *                with the error details
+     */
+    public void generatePassword() {
+        this.errorMessage.set("");
+        
+        if (!this.validateSettings()) {
+            return;
+        }
+        
+        try {
+        	
+            this.generator.setMinimumLength(this.minimumLength.get());
+            this.generator.setMustHaveAtLeastOneDigit(this.mustIncludeDigits.get());
+            this.generator.setMustHaveAtLeastOneLowerCaseLetter(this.mustIncludeLowerCaseLetters.get());
+            this.generator.setMustHaveAtLeastOneUpperCaseLetter(this.mustIncludeUpperCaseLetters.get());
+            
+            String password = this.generator.generatePassword();
+            this.generatedPassword.set(password);
+            
+        } catch (IllegalArgumentException exception) {
+            this.errorMessage.set("Invalid Minimum Length: " + exception.getMessage());
+        }
     }
 }
