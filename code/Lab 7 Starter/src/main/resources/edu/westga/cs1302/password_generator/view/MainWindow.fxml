@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane minHeight="366.0" minWidth="215.0" prefHeight="366.0" prefWidth="215.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.westga.cs1302.password_generator.view.MainWindow">
+   <children>
+      <CheckBox fx:id="mustIncludeDigits" layoutX="14.0" layoutY="49.0" mnemonicParsing="false" text="Must Include Digits" />
+      <CheckBox fx:id="mustIncludeLowerCaseLetters" layoutX="14.0" layoutY="79.0" mnemonicParsing="false" text="Must Include Lower Case Letters" />
+      <CheckBox fx:id="mustIncludeUpperCaseLetters" layoutX="14.0" layoutY="110.0" mnemonicParsing="false" text="Must Include Upper Case Letters" />
+      <Button layoutX="46.0" layoutY="146.0" mnemonicParsing="false" onAction="#generatePassword" text="Generate Password" />
+      <Label layoutX="14.0" layoutY="18.0" text="Minimum Length" />
+      <TextField fx:id="minimumLength" layoutX="118.0" layoutY="14.0" prefHeight="25.0" prefWidth="41.0" />
+      <TextArea fx:id="output" editable="false" layoutX="12.0" layoutY="183.0" prefHeight="169.0" prefWidth="193.0" wrapText="true" />
+   </children>
+</AnchorPane>
