@@ -7,6 +7,8 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /** Manages utilizing the model and makes properties available to bind the UI elements.
  * 
@@ -19,7 +21,7 @@ public class ViewModel {
 	private BooleanProperty requireLowercase;
 	private BooleanProperty requireUppercase;
 	
-	private StringProperty password;
+	private ObservableList<String> passwords;
 	private StringProperty errorText;
 	
     private PasswordGenerator generator;
@@ -32,7 +34,7 @@ public class ViewModel {
 		this.requireLowercase = new SimpleBooleanProperty(false);
 		this.requireUppercase = new SimpleBooleanProperty(false);
 		
-		this.password = new SimpleStringProperty("");
+		this.passwords = FXCollections.observableArrayList();
 		this.errorText = new SimpleStringProperty("");
 
         Random randomNumberGenerator = new Random();
@@ -75,8 +77,8 @@ public class ViewModel {
 	 * 
 	 * @return the password property
 	 */
-	public StringProperty getPassword() {
-		return this.password;
+	public ObservableList<String> getPasswords() {
+		return this.passwords;
 	}
 
 	/** Return the error text property
@@ -95,7 +97,6 @@ public class ViewModel {
 	 */
 	public void generatePassword() {
     	int minimumLength = -1;
-    	this.password.setValue("");
     	
     	try {
     		minimumLength = Integer.parseInt(this.minimumLength.getValue());
@@ -117,7 +118,7 @@ public class ViewModel {
     	
     	String password = this.generator.generatePassword();
     	
-    	this.password.setValue(password);
+    	this.passwords.add(password);
     }
 
 	/** Checks if the minimumLength textfield input is only digits, the valid entry type

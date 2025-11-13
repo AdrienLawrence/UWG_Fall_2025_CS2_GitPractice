@@ -5,8 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ListView;
 
 /** Codebehind for the MainWindow of the Application.
  * 
@@ -19,7 +19,7 @@ public class MainWindow {
     @FXML private CheckBox mustIncludeLowerCaseLetters;
     @FXML private CheckBox mustIncludeUpperCaseLetters;
     @FXML private TextField minimumLength;
-    @FXML private TextArea output;
+    @FXML private ListView<String> passwordList;
     @FXML private Label errorTextLabel;
     @FXML private Button generatePasswordButton;
     
@@ -34,7 +34,7 @@ public class MainWindow {
     	this.minimumLength.setText(this.vm.getMinimumLength().getValue());
     	this.vm.getMinimumLength().bind(this.minimumLength.textProperty());
     	
-    	this.output.textProperty().bind(this.vm.getPassword());
+    	this.passwordList.setItems(this.vm.getPasswords());
     	this.errorTextLabel.textProperty().bind(this.vm.getErrorText());
     	
     	this.generatePasswordButton.setOnAction(
@@ -43,11 +43,10 @@ public class MainWindow {
     			} 
     	);
     	
-    	this.minimumLength.textProperty().addListener((observable, oldValue, newValue) ->
-    	{
+    	this.minimumLength.textProperty().addListener((observable, oldValue, newValue) -> {
     		boolean isValid = this.vm.isMinLenValid(newValue);
     		if (!isValid) {
-    			this.minimumLength.setStyle("-fx-border-color: red; -efx-border-width: 2px;");
+    			this.minimumLength.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
     			this.generatePasswordButton.setDisable(true);
     		} else {
     			this.minimumLength.setStyle("");
