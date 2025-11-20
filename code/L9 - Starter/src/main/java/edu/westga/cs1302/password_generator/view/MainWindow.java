@@ -58,15 +58,55 @@ public class MainWindow {
     	this.errorTextLabel.textProperty().bind(this.vm.getErrorText());
     	this.passwordHistory.setItems(this.vm.getPasswordHistory());
     	
-    	this.minimumLength.textProperty().addListener((observable, newValue, oldValue) -> {
-    		this.minLengthErrorText.setVisible(!newValue.matches("\\d+") || Integer.parseInt(newValue) == 0);
-    	});
+    	this.setupInputValidation();
     	
     	this.generatePasswordButton.setOnAction(
     			(event) -> { 
     				this.vm.generatePassword();
     			} 
     	);
+    	
+    	this.updateGenerateButtonState();
+    }
+    
+    /**
+     * Sets up input validation listeners for all input fields
+     */
+    private void setupInputValidation() {
+        
+        this.minimumLength.textProperty().addListener((observable, oldValue, newValue) -> {
+            boolean isValidNumber = this.isValidMinimumLength(newValue);
+            this.minLengthErrorText.setVisible(!isValidNumber);
+            this.updateGenerateButtonState();
+        });
+        
+    }
+    
+    /**
+     * Checks if the minimum length input is valid
+     * 
+     * @param lengthText the text to validate
+     * @return true if valid positive integer, false otherwise
+     */
+    private boolean isValidMinimumLength(String lengthText) {
+        if (lengthText == null || lengthText.trim().isEmpty()) {
+            return false;
+        }
+        
+        try {
+            int length = Integer.parseInt(lengthText.trim());
+            return length >= 1;
+        } catch (NumberFormatException exception) {
+            return false;
+        }
+    }
+    
+    /**
+     * Updates the generate password button state based on input validity
+     */
+    private void updateGenerateButtonState() {
+        boolean isMinimumLengthValid = this.isValidMinimumLength(this.minimumLength.getText());
+        this.generatePasswordButton.setDisable(!isMinimumLengthValid);
     }
     
     /**
@@ -108,7 +148,7 @@ public class MainWindow {
     	Alert alert = new Alert(AlertType.INFORMATION);
     	alert.setTitle("About Password Generator");
     	alert.setHeaderText("Password Generator Application");
-    	alert.setContentText("Password Generator creates personalized passwords based on giving requirements about length and characters.\n\n"
+    	alert.setContentText("Password Generator generates passwords based on given character/length requirements.\n\n"
     	                  + "Author: Adrien Lawrence");
     	
     	alert.showAndWait();
