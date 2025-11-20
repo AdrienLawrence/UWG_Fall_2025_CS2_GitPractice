@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox minHeight="366.0" minWidth="215.0" prefHeight="377.0" prefWidth="215.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.westga.cs1302.password_generator.view.MainWindow">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu text="File">
+            <items>
+              <MenuItem text="Save" onAction="#handleSave" />
+              <MenuItem text="About" onAction="#handleAbout" />
+              <MenuItem text="Close" onAction="#handleClose" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <AnchorPane VBox.vgrow="ALWAYS">
+         <children>
+            <CheckBox fx:id="mustIncludeDigits" layoutX="14.0" layoutY="63.0" mnemonicParsing="false" text="Must Include Digits" />
+            <CheckBox fx:id="mustIncludeLowerCaseLetters" layoutX="14.0" layoutY="93.0" mnemonicParsing="false" text="Must Include Lower Case Letters" />
+            <CheckBox fx:id="mustIncludeUpperCaseLetters" layoutX="14.0" layoutY="124.0" mnemonicParsing="false" text="Must Include Upper Case Letters" />
+            <Button fx:id="generatePasswordButton" layoutX="46.0" layoutY="168.0" mnemonicParsing="false" text="Generate Password" />
+            <Label layoutX="14.0" layoutY="18.0" text="Minimum Length" />
+            <TextField fx:id="minimumLength" layoutX="118.0" layoutY="14.0" prefHeight="25.0" prefWidth="41.0" />
+            <Label fx:id="errorTextLabel" layoutX="9.0" layoutY="136.0" prefHeight="17.0" prefWidth="199.0" textFill="RED" />
+            <ListView fx:id="passwordHistory" layoutX="9.0" layoutY="197.0" prefHeight="169.0" prefWidth="200.0" />
+            <Label fx:id="minLengthErrorText" layoutX="40.0" layoutY="39.0" text="Must be a positive integer" textFill="RED" visible="false" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
