@@ -87,12 +87,23 @@ public class MainWindowViewModel {
 	
 	/** Adds a new contact with name and phone number set by the appropriate property
 	 * 
-	 * @precondition none
+	 * @precondition no contacts with the same name or number already exist
 	 * @postcondition a new contact with name and phone number provided has been added
 	 * 
 	 * @throws IllegalArgumentException if either name or phone number are invalid (see Contact class)
 	 */
 	public void addContact() throws IllegalArgumentException {
+		
+		String contactName = this.name.get();
+		String contactPhone = this.phoneNumber.get();
+		
+		if (this.nameToContact.containsKey(contactName)) {
+			throw new IllegalArgumentException("A contact with this name already exists.");
+		}
+		
+		if (this.phoneToContact.containsKey(contactPhone)) {
+			throw new IllegalArgumentException("A contact with this number already exists.");
+		}
 		
 		Contact newContact = new Contact(this.name.get(), this.phoneNumber.get());
 		

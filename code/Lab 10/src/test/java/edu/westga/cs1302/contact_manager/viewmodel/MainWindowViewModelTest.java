@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import edu.westga.cs1302.contact_manager.model.Contact;
-
 public class MainWindowViewModelTest {
     
     private MainWindowViewModel vm;
@@ -38,58 +36,50 @@ public class MainWindowViewModelTest {
         
         this.vm.getSearchCriteria().set("John");
         
-        // Act
         String result = this.vm.findContact();
         
-        // Assert
         assertEquals("John, 123-4567", result);
     }
     
     @Test
     public void testFindContactByPhoneNumber() {
-        // Arrange
+        
         this.vm.getName().set("John");
         this.vm.getPhoneNumber().set("123-4567");
         this.vm.addContact();
         
         this.vm.getSearchCriteria().set("123-4567");
         
-        // Act
         String result = this.vm.findContact();
         
-        // Assert
         assertEquals("John, 123-4567", result);
     }
     
     @Test
     public void testFindContactByPhoneNumberWithoutDash() {
-        // Arrange
+
         this.vm.getName().set("John");
         this.vm.getPhoneNumber().set("1234567");
         this.vm.addContact();
         
         this.vm.getSearchCriteria().set("1234567");
         
-        // Act
         String result = this.vm.findContact();
         
-        // Assert
         assertEquals("John, 1234567", result);
     }
     
     @Test
     public void testFindContactNotFound() {
-        // Arrange
+        
         this.vm.getName().set("John");
         this.vm.getPhoneNumber().set("123-4567");
         this.vm.addContact();
         
         this.vm.getSearchCriteria().set("Jane");
         
-        // Act
         String result = this.vm.findContact();
         
-        // Assert
         assertEquals("No contact found.", result);
     }
     
@@ -193,4 +183,41 @@ public class MainWindowViewModelTest {
         
         assertEquals("John, 123-4567", result);
     }
+    
+    @Test
+    public void testAddContactDuplicateNameThrowsException() {
+
+        this.vm.getName().set("John");
+        this.vm.getPhoneNumber().set("123-4567");
+        this.vm.addContact();
+        
+        this.vm.getName().set("John");
+        this.vm.getPhoneNumber().set("987-6543");
+        
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            this.vm.addContact();
+        });
+        
+        assertTrue(exception.getMessage().contains("A contact with this name already exists"));
+        assertEquals(1, this.vm.getContacts().size());
+    }
+
+    @Test
+    public void testAddContactDuplicatePhoneNumberThrowsException() {
+        
+        this.vm.getName().set("John");
+        this.vm.getPhoneNumber().set("123-4567");
+        this.vm.addContact();
+        
+        this.vm.getName().set("Jane");
+        this.vm.getPhoneNumber().set("123-4567");
+        
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            this.vm.addContact();
+        });
+        
+        assertTrue(exception.getMessage().contains("A contact with this number already exists"));
+        assertEquals(1, this.vm.getContacts().size());
+    }
+
 }
