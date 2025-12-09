@@ -17,7 +17,7 @@ import javafx.scene.layout.AnchorPane;
  * @version Fall 2025
  */
 public class MainWindow {
-    @FXML private Button addCollection;
+    @FXML private Button addCollectionButton;
     @FXML private ListView collections;
     @FXML private AnchorPane guiPane;
     @FXML private TextField name;
@@ -27,7 +27,7 @@ public class MainWindow {
     
     @FXML
     void initialize() {
-        assert this.addCollection != null : "fx:id=\"addCollection\" was not injected: check your FXML file 'MainWindow.fxml'.";
+        assert this.addCollectionButton != null : "fx:id=\"addCollection\" was not injected: check your FXML file 'MainWindow.fxml'.";
         assert this.collections != null : "fx:id=\"collections\" was not injected: check your FXML file 'MainWindow.fxml'.";
         assert this.guiPane != null : "fx:id=\"guiPane\" was not injected: check your FXML file 'MainWindow.fxml'.";
         assert this.name != null : "fx:id=\"name\" was not injected: check your FXML file 'MainWindow.fxml'.";
@@ -35,9 +35,28 @@ public class MainWindow {
         
         this.vm = new MainWindowViewModel();
         
+        this.vm.getCollectionName().bind(this.name.textProperty());
+        this.collections.setItems(this.vm.getCollections());
+        this.vm.getSelectedCollection().bind(this.collections.getSelectionModel().selectedItemProperty());
+        
         ContextMenu contextMenu = new ContextMenu();
         MenuItem removeMenuItem = new MenuItem("Remove Collection");
+        removeMenuItem.setOnAction(event -> this.vm.removeCollection());
         contextMenu.getItems().add(removeMenuItem);
         this.collections.setContextMenu(contextMenu);
+        
+        this.addCollectionButton.setOnAction(event -> {
+            try {
+                this.vm.addCollection();
+            } catch (IllegalArgumentException error) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setContentText("Error: " + error.getMessage());
+                alert.showAndWait();
+            }
+        });
+        
+        this.removeCollectionButton.setOnAction(event -> {
+            this.vm.removeCollection();
+        });
     }
 }
