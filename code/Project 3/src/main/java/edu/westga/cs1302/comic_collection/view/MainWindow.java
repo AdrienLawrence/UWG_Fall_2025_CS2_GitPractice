@@ -30,6 +30,10 @@ public class MainWindow {
     @FXML private ListView comics;
     @FXML private Button addComicButton;
     @FXML private Button removeComicButton;
+    
+    @FXML private TextField comicName;
+    @FXML private TextField comicIssue;
+    @FXML private Button searchButton;
 
     private MainWindowViewModel vm;
     
@@ -43,6 +47,9 @@ public class MainWindow {
         assert this.comics != null : "fx:id=\"comics\" was not injected: check your FXML file 'MainWindow.fxml'.";
         assert this.addComicButton != null : "fx:id=\"addComicButton\" was not injected: check your FXML file 'MainWindow.fxml'.";
         assert this.removeComicButton != null : "fx:id=\"removeComicButton\" was not injected: check your FXML file 'MainWindow.fxml'.";
+        assert this.comicName != null : "fx:id=\"comicName\" was not injected: check your FXML file 'MainWindow.fxml'.";
+        assert this.comicIssue != null : "fx:id=\"comicIssue\" was not injected: check your FXML file 'MainWindow.fxml'.";
+        assert this.searchButton != null : "fx:id=\"searchButton\" was not injected: check your FXML file 'MainWindow.fxml'.";
         
         this.vm = new MainWindowViewModel();
         
@@ -88,6 +95,10 @@ public class MainWindow {
         this.removeComicButton.setOnAction(event -> {
             this.vm.removeComic();
         });
+        
+        this.searchButton.setOnAction(event -> {
+            this.handleSearch();
+        });
     }
     
     private void openAddComicWindow() {
@@ -107,5 +118,14 @@ public class MainWindow {
             alert.setContentText("Cannot open add comic window");
             alert.showAndWait();
         }
+    }
+    
+    private void handleSearch() {
+       
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Comic Search");
+        alert.setHeaderText("Search Feature");
+        alert.setContentText("TBI");
+        alert.showAndWait();
     }
 }
