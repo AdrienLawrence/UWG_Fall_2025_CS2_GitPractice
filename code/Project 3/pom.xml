@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>edu.westga.cs1302</groupId>
-    <artifactId>contact_manager</artifactId>
+    <artifactId>comic_collection</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -54,7 +54,7 @@
                         <!-- Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>edu.westga.cs1302.contact_manager.Main</mainClass>
+                            <mainClass>edu.westga.cs1302.comic_collection.Main</mainClass>
                         </configuration>
                     </execution>
                 </executions>
