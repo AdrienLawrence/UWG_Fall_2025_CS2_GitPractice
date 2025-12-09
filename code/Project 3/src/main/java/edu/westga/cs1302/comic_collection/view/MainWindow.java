@@ -77,7 +77,7 @@ public class MainWindow {
         
         ContextMenu comicContextMenu = new ContextMenu();
         MenuItem removeComicMenuItem = new MenuItem("Remove Comic");
-        removeComicMenuItem.setOnAction(event -> this.vm.removeSelectedComic());
+        removeComicMenuItem.setOnAction(event -> this.vm.removeComic());
         comicContextMenu.getItems().add(removeComicMenuItem);
         this.comics.setContextMenu(comicContextMenu);
         

@@ -26,6 +26,11 @@ public class AddComicWindow {
         
         this.addButton.setOnAction(event -> this.handleAdd());
         this.cancelButton.setOnAction(event -> this.closeWindow());
+        
+        this.addButton.disableProperty().bind(
+        	    this.titleField.textProperty().isEmpty()
+        	    .or(this.issueField.textProperty().isEmpty())
+        	);
     }
     
     public void setViewModel(MainWindowViewModel vm) {
