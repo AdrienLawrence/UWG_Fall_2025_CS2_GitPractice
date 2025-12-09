@@ -58,5 +58,9 @@ public class MainWindow {
         this.removeCollectionButton.setOnAction(event -> {
             this.vm.removeCollection();
         });
+        
+        this.addCollectionButton.disableProperty().bind(
+        	    this.name.textProperty().isEmpty()
+        	);
     }
 }
