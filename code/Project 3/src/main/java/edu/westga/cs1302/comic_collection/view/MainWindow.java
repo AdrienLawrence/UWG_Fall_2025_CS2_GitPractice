@@ -99,6 +99,13 @@ public class MainWindow {
         this.searchButton.setOnAction(event -> {
             this.handleSearch();
         });
+        
+        this.vm.getSearchTitle().bind(this.comicName.textProperty());
+        this.vm.getSearchIssue().bind(this.comicIssue.textProperty());
+
+        this.searchButton.setOnAction(event -> {
+            this.handleSearch();
+        });
     }
     
     private void openAddComicWindow() {
@@ -121,11 +128,17 @@ public class MainWindow {
     }
     
     private void handleSearch() {
-       
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Comic Search");
-        alert.setHeaderText("Search Feature");
-        alert.setContentText("TBI");
-        alert.showAndWait();
+        try {
+            String result = this.vm.searchComic();
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Search Result");
+            alert.setHeaderText(null);
+            alert.setContentText(result);
+            alert.showAndWait();
+        } catch (IllegalArgumentException error) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setContentText("Search Error: " + error.getMessage());
+            alert.showAndWait();
+        }
     }
 }
