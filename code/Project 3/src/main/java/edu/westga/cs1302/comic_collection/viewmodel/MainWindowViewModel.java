@@ -13,6 +13,11 @@ import javafx.collections.FXCollections;
 import java.util.HashMap;
 import java.util.Map;
 
+/** Manages utilizing the model and makes properties available to bind the UI elements.
+ * 
+ * @author CS 1302
+ * @version Fall 2025
+ */
 public class MainWindowViewModel {
     private StringProperty collectionName;
     private ListProperty<Collection> collections;
@@ -28,14 +33,19 @@ public class MainWindowViewModel {
     
     private Map<String, Collection> comicToCollectionMap;
     
+    /** Initializes the properties for the viewmodel.
+     * 
+     */
     public MainWindowViewModel() {
         this.collectionName = new SimpleStringProperty("");
-        this.collections = new SimpleListProperty<Collection>(FXCollections.observableArrayList());
+        this.collections = new SimpleListProperty<Collection>(
+            FXCollections.observableArrayList());
         this.selectedCollection = new SimpleObjectProperty<Collection>();
         
         this.comicTitle = new SimpleStringProperty("");
         this.comicIssue = new SimpleStringProperty("");
-        this.comicsInSelectedCollection = new SimpleListProperty<Comic>(FXCollections.observableArrayList());
+        this.comicsInSelectedCollection = new SimpleListProperty<Comic>(
+            FXCollections.observableArrayList());
         this.selectedComic = new SimpleObjectProperty<Comic>();
         
         this.searchTitle = new SimpleStringProperty("");
@@ -46,6 +56,9 @@ public class MainWindowViewModel {
         this.setupSelectionListener();
     }
     
+    /** Sets up listener for the collection listview.
+     * 
+     */
     private void setupSelectionListener() {
         this.selectedCollection.addListener((observable, oldValue, newValue) -> {
             this.comicsInSelectedCollection.clear();
@@ -55,42 +68,81 @@ public class MainWindowViewModel {
         });
     }
     
+    /** Returns the collection name property.
+     * 
+     * @return the collection name property
+     */
     public StringProperty getCollectionName() {
         return this.collectionName;
     }
     
+    /** Returns the collections list property.
+     * 
+     * @return the collections list property
+     */
     public ListProperty<Collection> getCollections() {
         return this.collections;
     }
     
+    /** Returns the selected collection.
+     * 
+     * @return the selected collection
+     */
     public ObjectProperty<Collection> getSelectedCollection() {
         return this.selectedCollection;
     }
     
+    /** Returns the comic title property.
+     * 
+     * @return the comic title property
+     */
     public StringProperty getComicTitle() {
         return this.comicTitle;
     }
     
+    /** Returns the comic issue property.
+     * 
+     * @return the comic issue property
+     */
     public StringProperty getComicIssue() {
         return this.comicIssue;
     }
     
+    /** Returns the comics in selected collection list property.
+     * 
+     * @return the comics in selected collection list property
+     */
     public ListProperty<Comic> getComicsInSelectedCollection() {
         return this.comicsInSelectedCollection;
     }
     
+    /** Returns the selected comic.
+     * 
+     * @return the selected comic
+     */
     public ObjectProperty<Comic> getSelectedComic() {
         return this.selectedComic;
     }
     
+    /** Returns the search title property.
+     * 
+     * @return the search title property
+     */
     public StringProperty getSearchTitle() {
         return this.searchTitle;
     }
     
+    /** Returns the search issue property.
+     * 
+     * @return the search issue property
+     */
     public StringProperty getSearchIssue() {
         return this.searchIssue;
     }
     
+    /** Adds a new collection with the current collection name.
+     * 
+     */
     public void addCollection() {
         String name = this.collectionName.get();
         if (name == null || name.isEmpty()) {
@@ -101,6 +153,9 @@ public class MainWindowViewModel {
         this.collections.add(newCollection);
     }
     
+    /** Removes the selected collection.
+     * 
+     */
     public void removeCollection() {
         Collection selected = this.selectedCollection.get();
         if (selected != null) {
@@ -112,6 +167,9 @@ public class MainWindowViewModel {
         }
     }
     
+    /** Adds a new comic to the selected collection.
+     * 
+     */
     public void addComic() {
         String title = this.comicTitle.get();
         String issueText = this.comicIssue.get();
@@ -126,7 +184,7 @@ public class MainWindowViewModel {
         int issueNumber;
         try {
             issueNumber = Integer.parseInt(issueText);
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException exception) {
             throw new IllegalArgumentException("issue must be a number");
         }
         
@@ -141,9 +199,11 @@ public class MainWindowViewModel {
         
         String key = this.createKey(title, issueNumber);
         this.comicToCollectionMap.put(key, selected);
-        
     }
     
+    /** Removes the selected comic from the selected collection.
+     * 
+     */
     public void removeComic() {
         Comic selected = this.selectedComic.get();
         Collection collection = this.selectedCollection.get();
@@ -154,10 +214,13 @@ public class MainWindowViewModel {
             
             String key = this.createKey(selected.getTitle(), selected.getIssueNumber());
             this.comicToCollectionMap.remove(key);
-            
         }
     }
     
+    /** Searches for a comic by title and issue number.
+     * 
+     * @return search result message
+     */
     public String searchComic() {
         String title = this.searchTitle.get();
         String issueText = this.searchIssue.get();
@@ -170,10 +233,9 @@ public class MainWindowViewModel {
         }
         
         int issueNumber;
-        
         try {
             issueNumber = Integer.parseInt(issueText);
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException exception) {
             throw new IllegalArgumentException("issue must be a number");
         }
         
@@ -181,13 +243,14 @@ public class MainWindowViewModel {
         Collection collection = this.comicToCollectionMap.get(key);
         
         if (collection != null) {
-            return "Comic '" + title + " #" + issueNumber + "' found in: " + collection.getName();
+            return "Comic '" + title + " #" + issueNumber + "' found in: " 
+                + collection.getName();
         } else {
             return "Comic not found.";
         }
     }
     
-    private String createKey(String title, int issueNumber) {
+    private String createKey(final String title, final int issueNumber) {
         return title + "|" + issueNumber;
     }
 }

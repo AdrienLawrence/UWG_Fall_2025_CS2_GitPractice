@@ -15,7 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-/** Codebehind for the MainWindow
+/** Codebehind for the MainWindow.
  * 
  * @author CS 1302
  * @version Fall 2025
@@ -39,25 +39,38 @@ public class MainWindow {
     
     @FXML
     void initialize() {
-        assert this.addCollectionButton != null : "fx:id=\"addCollectionButton\" was not injected: check your FXML file 'MainWindow.fxml'.";
-        assert this.collections != null : "fx:id=\"collections\" was not injected: check your FXML file 'MainWindow.fxml'.";
-        assert this.guiPane != null : "fx:id=\"guiPane\" was not injected: check your FXML file 'MainWindow.fxml'.";
-        assert this.name != null : "fx:id=\"name\" was not injected: check your FXML file 'MainWindow.fxml'.";
-        assert this.removeCollectionButton != null : "fx:id=\"removeCollectionButton\" was not injected: check your FXML file 'MainWindow.fxml'.";
-        assert this.comics != null : "fx:id=\"comics\" was not injected: check your FXML file 'MainWindow.fxml'.";
-        assert this.addComicButton != null : "fx:id=\"addComicButton\" was not injected: check your FXML file 'MainWindow.fxml'.";
-        assert this.removeComicButton != null : "fx:id=\"removeComicButton\" was not injected: check your FXML file 'MainWindow.fxml'.";
-        assert this.comicName != null : "fx:id=\"comicName\" was not injected: check your FXML file 'MainWindow.fxml'.";
-        assert this.comicIssue != null : "fx:id=\"comicIssue\" was not injected: check your FXML file 'MainWindow.fxml'.";
-        assert this.searchButton != null : "fx:id=\"searchButton\" was not injected: check your FXML file 'MainWindow.fxml'.";
+        assert this.addCollectionButton != null 
+            : "fx:id=\"addCollectionButton\" was not injected.";
+        assert this.collections != null 
+            : "fx:id=\"collections\" was not injected.";
+        assert this.guiPane != null 
+            : "fx:id=\"guiPane\" was not injected.";
+        assert this.name != null 
+            : "fx:id=\"name\" was not injected.";
+        assert this.removeCollectionButton != null 
+            : "fx:id=\"removeCollectionButton\" was not injected.";
+        assert this.comics != null 
+            : "fx:id=\"comics\" was not injected.";
+        assert this.addComicButton != null 
+            : "fx:id=\"addComicButton\" was not injected.";
+        assert this.removeComicButton != null 
+            : "fx:id=\"removeComicButton\" was not injected.";
+        assert this.comicName != null 
+            : "fx:id=\"comicName\" was not injected.";
+        assert this.comicIssue != null 
+            : "fx:id=\"comicIssue\" was not injected.";
+        assert this.searchButton != null 
+            : "fx:id=\"searchButton\" was not injected.";
         
         this.vm = new MainWindowViewModel();
         
         this.vm.getCollectionName().bind(this.name.textProperty());
         this.collections.setItems(this.vm.getCollections());
-        this.vm.getSelectedCollection().bind(this.collections.getSelectionModel().selectedItemProperty());
+        this.vm.getSelectedCollection().bind(
+            this.collections.getSelectionModel().selectedItemProperty());
         
-        this.addCollectionButton.disableProperty().bind(this.name.textProperty().isEmpty());
+        this.addCollectionButton.disableProperty().bind(
+            this.name.textProperty().isEmpty());
         
         ContextMenu collectionContextMenu = new ContextMenu();
         MenuItem removeCollectionMenuItem = new MenuItem("Remove Collection");
@@ -80,7 +93,8 @@ public class MainWindow {
         });
         
         this.comics.setItems(this.vm.getComicsInSelectedCollection());
-        this.vm.getSelectedComic().bind(this.comics.getSelectionModel().selectedItemProperty());
+        this.vm.getSelectedComic().bind(
+            this.comics.getSelectionModel().selectedItemProperty());
         
         ContextMenu comicContextMenu = new ContextMenu();
         MenuItem removeComicMenuItem = new MenuItem("Remove Comic");
@@ -96,21 +110,26 @@ public class MainWindow {
             this.vm.removeComic();
         });
         
-        this.searchButton.setOnAction(event -> {
-            this.handleSearch();
-        });
-        
         this.vm.getSearchTitle().bind(this.comicName.textProperty());
         this.vm.getSearchIssue().bind(this.comicIssue.textProperty());
 
         this.searchButton.setOnAction(event -> {
             this.handleSearch();
         });
+        
+        this.searchButton.disableProperty().bind(
+            this.comicName.textProperty().isEmpty()
+            .or(this.comicIssue.textProperty().isEmpty())
+        );
     }
     
+    /** Opens the add comic window when addcomic button is pressed.
+     * 
+     */
     private void openAddComicWindow() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AddComicWindow.fxml"));
+            FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("AddComicWindow.fxml"));
             Parent root = loader.load();
             
             AddComicWindow controller = loader.getController();
@@ -120,13 +139,16 @@ public class MainWindow {
             stage.setScene(new Scene(root));
             stage.setTitle("Add Comic");
             stage.show();
-        } catch (Exception e) {
+        } catch (Exception exception) {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setContentText("Cannot open add comic window");
             alert.showAndWait();
         }
     }
     
+    /** Searches for comic using binded viewmodel method.
+     * 
+     */
     private void handleSearch() {
         try {
             String result = this.vm.searchComic();
