@@ -38,4 +38,13 @@ public class Collection {
     public String toString() {
         return this.name + " (" + this.comics.size() + " comics)";
     }
+    
+    public Comic findComic(String title, int issueNumber) {
+        for (Comic comic : this.comics) {
+            if (comic.getTitle().equals(title) && comic.getIssueNumber() == issueNumber) {
+                return comic;
+            }
+        }
+        return null;
+    }
 }
